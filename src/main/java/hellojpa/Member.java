@@ -16,7 +16,7 @@ public class Member {
     private String username;
 
     @ManyToOne
-    @JoinColumn(name = "TEAM_ID")
+    @JoinColumn(name = "TEAM_ID") //외래키가 있는곳을 주인으로 정해라
     private Team team;
 
     public Long getId() {
@@ -42,4 +42,5 @@ public class Member {
     public void setTeam(Team team) {
         this.team = team;
     }
+
 }
