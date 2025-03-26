@@ -19,6 +19,10 @@ public class Member {
     @JoinColumn(name = "TEAM_ID") //외래키가 있는곳을 주인으로 정해라
     private Team team;
 
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
+
     public Long getId() {
         return id;
     }
