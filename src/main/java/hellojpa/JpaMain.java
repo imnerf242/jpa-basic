@@ -22,19 +22,19 @@ public class JpaMain {
         tx.begin();
 
         try{
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
+            Movie movie = new Movie();
+            movie.setDirector("aaa");
+            movie.setActor("bbb");
+            movie.setName("바람과 함께 사라지다");
+            movie.setPrice(10000);
 
-            Member member = new Member();
-            member.setUsername("member1");
-            em.persist(member);
-
-            team.addMember(member);
+            em.persist(movie);
 
             em.flush();
             em.clear();
 
+            Movie findmovie = em.find(Movie.class, movie.getId());
+            System.out.println("findmovie = " + findmovie);
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
