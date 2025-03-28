@@ -9,6 +9,7 @@ import org.hibernate.sql.ast.tree.expression.Literal;
 
 import javax.lang.model.SourceVersion;
 import java.sql.SQLOutput;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class JpaMain {
@@ -22,15 +23,12 @@ public class JpaMain {
         tx.begin();
 
         try{
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
-
             Member member = new Member();
-            member.setUsername("member1");
-            em.persist(member);
+            member.setCreatedBy("kim");
+            member.setUsername("user1");
+            member.setCreatedDate(LocalDateTime.now());
 
-            team.addMember(member);
+            em.persist(member);
 
             em.flush();
             em.clear();
