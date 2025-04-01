@@ -22,10 +22,15 @@ public class JpaMain {
         tx.begin();
 
         try{
-            Member member = new Member();
-            member.setUsername("hello");
+            Member member1 = new Member();
+            member1.setUsername("member1");
+            em.persist(member1);
 
-            em.persist(member);
+
+            Member member2 = new Member();
+            member1.setUsername("member2");
+            em.persist(member2);
+
 
             em.flush();
             em.clear();
@@ -33,8 +38,11 @@ public class JpaMain {
 //            Member findmember = em.find(Member.class, member.getId());
 //            System.out.println("findmember.id = " + findmember.getId());
 //            System.out.println("findmember.username = " + findmember.getUsername());
-            Member findMember = em.getReference(Member.class, member.getId());
 
+            Member m1 = em.find(Member.class, member1.getId());
+            Member m2 = em.find(Member.class, member2.getId());
+
+            System.out.println(("m1 == m2: " + (m1.getClass() == m2.getClass())));
 
             tx.commit();
         } catch (Exception e) {
