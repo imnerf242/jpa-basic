@@ -18,7 +18,8 @@ public class Member extends  BaseEntity {
     @Column(name = "USERNAME")
     private String username;
 
-    @ManyToOne
+//    @ManyToOne (fetch = FetchType.LAZY) //fetchtype.lazy 시 프록시 상태로 조회홤
+    @ManyToOne (fetch = FetchType.EAGER)  // 즉시로딩 >> 실무에선 절대 쓰지 말것
     @JoinColumn(name = "TEAM_ID") //외래키가 있는곳을 주인으로 정해라
     private Team team;
 
