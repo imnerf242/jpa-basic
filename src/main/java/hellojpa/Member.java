@@ -18,6 +18,27 @@ public class Member extends  BaseEntity {
     @Column(name = "USERNAME")
     private String username;
 
+    //period 기간
+    @Embedded //값타입 사용하는곳에 표시
+    private Period workperiod;
+
+    //주소
+    @Embedded //값타입 사용하는곳에 표시
+    private Address homeaddress;
+
+    //주소
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "city",
+                    column = @Column(name = "WORK_CITY")),
+            @AttributeOverride(name = "strret",
+                    column = @Column(name = "WORK_STREET")),
+            @AttributeOverride(name = "zipcode",
+                    column = @Column(name = "WORK_ZIPCODE"))
+    })
+
+    private Address workaddress;
+
 //    @ManyToOne (fetch = FetchType.LAZY) //fetchtype.lazy 시 프록시 상태로 조회홤
     @ManyToOne (fetch = FetchType.EAGER)  // 즉시로딩 >> 실무에선 절대 쓰지 말것
     @JoinColumn(name = "TEAM_ID") //외래키가 있는곳을 주인으로 정해라
