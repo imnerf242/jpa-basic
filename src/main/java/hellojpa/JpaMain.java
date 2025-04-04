@@ -22,21 +22,15 @@ public class JpaMain {
         tx.begin();
 
         try{
+            Address address = new Address("city", "street", "10000");
 
-            Child child1 = new Child();
-            Child child2 = new Child();
+            Member member = new Member();
+            member.setUsername("member1");
+            member.setHomeAddress(address);
+            em.persist(member);
 
-            Parent parent = new Parent();
-            parent.addChild(child1);
-            parent.addChild(child2);
-
-            em.persist(parent);
-
-            em.flush();
-            em.clear();
-
-            Parent findParent = em.find(Parent.class, parent.getId());
-            findParent.getChildList().remove(0);
+            Address newAddress = new Address("NewCity", address.getStreet(), address.getZipcode());
+            member.setHomeAddress(newAddress);
 
 
             tx.commit();

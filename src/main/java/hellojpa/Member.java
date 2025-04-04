@@ -20,11 +20,11 @@ public class Member extends  BaseEntity {
 
     //period 기간
     @Embedded //값타입 사용하는곳에 표시
-    private Period workperiod;
+    private Period workPeriod;
 
     //주소
     @Embedded //값타입 사용하는곳에 표시
-    private Address homeaddress;
+    private Address homeAddress;
 
     //주소
     @Embedded
@@ -37,7 +37,7 @@ public class Member extends  BaseEntity {
                     column = @Column(name = "WORK_ZIPCODE"))
     })
 
-    private Address workaddress;
+    private Address workAddress;
 
 //    @ManyToOne (fetch = FetchType.LAZY) //fetchtype.lazy 시 프록시 상태로 조회홤
     @ManyToOne (fetch = FetchType.EAGER)  // 즉시로딩 >> 실무에선 절대 쓰지 말것
@@ -81,4 +81,27 @@ public class Member extends  BaseEntity {
         this.team = team;
     }
 
+    public Period getWorkPeriod() {
+        return workPeriod;
+    }
+
+    public void setWorkPeriod(Period workPeriod) {
+        this.workPeriod = workPeriod;
+    }
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
+    public Address getWorkAddress() {
+        return workAddress;
+    }
+
+    public void setWorkAddress(Address workAddress) {
+        this.workAddress = workAddress;
+    }
 }
