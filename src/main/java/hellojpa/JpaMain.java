@@ -22,7 +22,7 @@ public class JpaMain {
         tx.begin();
 
         try{
-            Address address = new Address("city", "street", "10000");
+            Address address =  new Address("city", "street", "10000");
 
             Member member = new Member();
             member.setUsername("member1");
