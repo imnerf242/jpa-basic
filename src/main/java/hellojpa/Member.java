@@ -47,7 +47,7 @@ public class Member extends  BaseEntity {
     @AttributeOverrides({
             @AttributeOverride(name = "city",
                     column = @Column(name = "WORK_CITY")),
-            @AttributeOverride(name = "strret",
+            @AttributeOverride(name = "street",
                     column = @Column(name = "WORK_STREET")),
             @AttributeOverride(name = "zipcode",
                     column = @Column(name = "WORK_ZIPCODE"))

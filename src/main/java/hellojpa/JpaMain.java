@@ -22,16 +22,15 @@ public class JpaMain {
         tx.begin();
 
         try{
-            Address address =  new Address("city", "street", "10000");
 
-            Member member = new Member();
-            member.setUsername("member1");
-            member.setHomeAddress(address);
-            em.persist(member);
+            List<Member> result = em.createQuery(
+                    "select m From Member m where m.username like '%kim'",
+                    Member.class
+            ).getResultList();
 
-            Address newAddress = new Address("NewCity", address.getStreet(), address.getZipcode());
-            member.setHomeAddress(newAddress);
-
+            for(Member member :result){
+                System.out.println("member = " + member);
+            }
 
             tx.commit();
         } catch (Exception e) {
